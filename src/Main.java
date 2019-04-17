@@ -3,7 +3,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        int Utenti = 99;
+        int Utenti = 1000;
 
         // Program Arguments
         // -U [Numero] : Utenti da mettere nell'arena
@@ -21,7 +21,7 @@ public class Main {
                         break;
                     case "-?":
                         System.out.println("Argomenti disponibili\n"+"-? : Mostra questo help\n"+"-U : Utenti da mettere nell'arena\n");
-                        break;
+                        return;
                     default:
                         break;
 
