@@ -1,6 +1,8 @@
 package universo;
 
 import java.util.Random;
+import java.util.List;
+import java.util.Vector;
 
 public class Persona {
 
@@ -8,12 +10,17 @@ public class Persona {
 
     private int TTL;
     private int id;
+    private List<Persona> acquaintances = new Vector<>();
 
-    Random rand = new Random();
 
     public Persona(){
+        Random rand = new Random();
+
         this.id = master_id++;
         this.TTL = rand.nextInt(330) + 35; // [35 - 365]
+
+        this.acquaintances.add(this);
+
     }
 
 
