@@ -2,7 +2,11 @@
 /*
  * A Social Game System (SGS)
  *
+ * Argomenti programma:
  *
+ * -?          : Mostra l'help
+ * -U [numero] : Imposta un valore per il numero massimo di utenti nell'iniverso     ( Default: 1000 )
+ * -L [numero] : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )
  *
  */
 
