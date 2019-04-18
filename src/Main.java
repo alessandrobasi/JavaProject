@@ -19,6 +19,7 @@ public class Main {
         // Program Arguments
         // -U [Numero] : Utenti da mettere nell'arena
         for(int i = 0; i< args.length; i++){
+
             if(args[i].startsWith("-")){
                 switch (args[i]){
 
@@ -62,7 +63,7 @@ public class Main {
 
         System.out.println( mondo1.get_size() );
 
-
+        mondo1.get_persona(2).get_info();
 
 
     }

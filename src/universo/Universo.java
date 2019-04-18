@@ -65,6 +65,14 @@ public class Universo {
 
     }
 
+    public Persona get_persona(int i){
+        try{
+            return get_active_universe().get(i);
+        }
+        catch (IndexOutOfBoundsException  e){
+            return get_active_universe().get(0);
+        }
 
+    }
 
 }
