@@ -1,3 +1,5 @@
+import universo.Persona;
+
 import java.util.List;
 import java.util.Vector;
 

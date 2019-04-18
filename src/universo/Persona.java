@@ -1,3 +1,5 @@
+package universo;
+
 import java.util.Random;
 
 public class Persona {
