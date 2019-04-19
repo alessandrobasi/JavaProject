@@ -32,7 +32,8 @@ public class Persona {
 
     public void add_acquaintances(Persona conoscente){
 
-
+        Random rand = new Random();
+        int i = rand.nextInt(9) - 1;
 
     }
 
