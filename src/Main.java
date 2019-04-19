@@ -8,7 +8,7 @@
  * -U [numero] : Imposta un valore per il numero massimo di utenti nell'iniverso     ( Default: 1000 )
  * -L [numero] : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )
  *
- */
+ *///A Social Game System (SGS)
 
 import universo.Universo;
 
@@ -63,12 +63,16 @@ public class Main {
 
 
         System.out.println( mondo1.get_size() );
-        mondo1.add_life();
 
-        System.out.println( mondo1.get_size() );
+        //mondo1.get_persona(2).get_info();
 
-        mondo1.get_persona(2).get_info();
 
+
+        while(mondo1.Tempo()){
+
+
+
+        }
 
     }
 
