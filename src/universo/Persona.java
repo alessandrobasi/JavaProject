@@ -34,6 +34,7 @@ public class Persona {
 
         Random rand = new Random();
         int i = rand.nextInt(9) - 1;
+        acquaintances.add(i,conoscente);
 
     }
 
