@@ -58,9 +58,9 @@ public class Persona {
             Random rand = new Random();
 
 
-            int i = rand.nextInt((num_conoscenti-1)) - 1;
+            int i = rand.nextInt((num_conoscenti-1)) + 1;
             while(Relation_board.get(i) != null ){
-                i = rand.nextInt((num_conoscenti-1)) - 1;
+                i = rand.nextInt((num_conoscenti-1)) + 1;
             }
 
 
@@ -81,9 +81,9 @@ public class Persona {
     public int run_acquaintances(Persona conoscente, int i){
         Random rand = new Random();
 
-        int j = rand.nextInt((num_conoscenti-1)) - 1;
+        int j = rand.nextInt((num_conoscenti-1)) + 1;
         while(Relation_board.get(j)!= null){
-            j = rand.nextInt((num_conoscenti-1)) - 1;
+            j = rand.nextInt((num_conoscenti-1)) + 1;
         }
 
         Relation_board.add(j, new SimpleEntry<>(conoscente, i));
@@ -92,6 +92,9 @@ public class Persona {
     }
 
 
+    public List<Entry<Persona, Integer>> get_Relations(){
+        return Relation_board;
+    }
 
 
     // Modifica dei valori nel Tempo

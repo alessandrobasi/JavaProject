@@ -1,5 +1,7 @@
 package universo;
 
+import Relation_board.Relation_board;
+
 public class Main {
 
 
@@ -16,6 +18,8 @@ public class Main {
 
         numero1.add_acquaintances(numero2);
 
+        Relation_board board1 = new Relation_board(numero1);
+        Relation_board board2 = new Relation_board(numero2);
 
 
         /*
