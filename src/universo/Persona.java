@@ -1,8 +1,10 @@
 package universo;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.Random;
 import java.util.List;
 import java.util.Vector;
+import java.util.Map.Entry;
 
 public class Persona {
 
@@ -11,7 +13,10 @@ public class Persona {
     private boolean is_alive = true;
     private int TTL; // Time to live, tempo di vita da 35 a 365 cicli
     private int id; // ID di identitificazione da 0 a infinito
-    private List<Persona> acquaintances = new Vector<>(); // Conoscenti
+
+    // Conoscenti
+    private List<Entry<Persona,Integer>> Relation_board = new Vector<>();
+
 
 
     public Persona(){
@@ -20,22 +25,24 @@ public class Persona {
         this.id = master_id++;
         this.TTL = rand.nextInt(330) + 35; // [35 - 365]
 
-        this.acquaintances.add(this);
+        this.Relation_board.add( new SimpleEntry<>(this,0) );
 
     }
 
 
     public void get_info(){
-        System.out.println("ID: " + id + "\nTTL: " + TTL);
+        System.out.println("In vita" + is_alive + "\nID: " + id + "\nTTL: " + TTL);
     }
 
 
     public void add_acquaintances(Persona conoscente){
 
-        Random rand = new Random();
-        int i = rand.nextInt(9) - 1;
-        acquaintances.add(i,conoscente);
-
+        if (this.is_alive) {
+            Random rand = new Random();
+            int j = rand.nextInt(9) - 1;
+            int i = rand.nextInt(9) - 1;
+            Relation_board.add(j, new SimpleEntry<>(conoscente, i));
+        }
     }
 
 
