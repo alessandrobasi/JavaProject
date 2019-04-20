@@ -5,6 +5,20 @@ public class Main {
 
     public static void main(String[] args){
 
+        Persona numero1 = new Persona();
+
+        Persona numero2 = new Persona();
+
+        numero1.get_info();
+
+        numero2.get_info();
+
+
+        numero1.add_acquaintances(numero2);
+
+
+
+        /*
 
         // Creazione universo
         // ( Grandezza universo, Numero di persone attive )
@@ -18,7 +32,7 @@ public class Main {
         System.out.println( mondo1.get_size() );
 
 
-
+        */
 
     }
 
