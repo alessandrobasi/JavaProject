@@ -18,25 +18,11 @@ public class Start {
 
         numero1.add_acquaintances(numero2);
 
-        Relation_board board1 = new Relation_board(numero1);
-        Relation_board board2 = new Relation_board(numero2);
+        Universo a = new Universo(10);
+
+        System.out.println( a.get_size() );
 
 
-        /*
-
-        // Creazione universo
-        // ( Grandezza universo, Numero di persone attive )
-        Universo mondo1 = new Universo(1000,20);
-
-
-
-        System.out.println( mondo1.get_size() );
-        mondo1.add_life();
-
-        System.out.println( mondo1.get_size() );
-
-
-        */
 
     }
 

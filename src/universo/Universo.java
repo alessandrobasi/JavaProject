@@ -12,7 +12,7 @@ public class Universo {
     List<Persona> elementi = new Vector<>();
     
 
-    // Dio ( Spazio )  Costruttori per creare l'universo e inizializzare la lista di utenti (Default: 1000 / di cui attivi: 500 )
+    // Dio ( Spazio ) - Costruttori per creare l'universo e inizializzare la lista di utenti (Default: 1000 / di cui attivi: 500 )
     public Universo(){
         // Creazione utenti
         for(int i = 0; i < Variabile.Utenti; i++){
@@ -77,17 +77,22 @@ public class Universo {
         // Contatore delle persone vive nell'universo attivo
         int persone_vive  = 0;
 
-        // Aspetta 500 milli secondi
+        // Aspetta il Delay
         try {
             TimeUnit.MILLISECONDS.sleep( Variabile.DelayTempo );
         }
         catch (InterruptedException e){}
 
-        for(Persona io : get_active_universe()){ // for-each utenti attivi, diminuisci il TTL
-            io.tempo_trascorso(); // diminuisci il temp di vita di ogni utente di 1
-            if( persone_vive <= Variabile.MinNumLife && io.is_alive() ){ // conta se ci sono almeno 'num_minimo_persone' persone vive
-                persone_vive+=1;
+        // for-each utenti attivi, nell'universo attivo, diminuisci il loro TTL
+        for(Persona io : get_active_universe() ) {
+
+            io.tempo_trascorso(); // diminuisci il temp di vita dell'utente di 1 tick
+
+            // Conta se ci sono almeno 'Variabile.MinNumLife' persone vive
+            if( persone_vive <= Variabile.MinNumLife && io.is_alive() ) {
+                persone_vive += 1;
             }
+
         }
 
         // End game
@@ -104,27 +109,37 @@ public class Universo {
     }
 
 
-
+    // Incrementa l'universo attivo di 1 (Aggiungi un nuovo utente)
     public void add_life(){
-        Variabile.UtentiAttivi += 1;
+
+        if ((Variabile.UtentiAttivi + 1) < Variabile.Utenti ) {
+            Variabile.UtentiAttivi += 1;
+        }
+        else {
+            System.out.println("Universo pieno");
+        }
+
+
     }
 
+    // Ritorna gli utenti attivi dell'universo
     public List<Persona> get_active_universe(){
         return elementi.subList(0, Variabile.UtentiAttivi );
     }
 
+    // Ritorna il numero di utenti attivi
     public int get_size(){
-
-        return elementi.subList(0, Variabile.UtentiAttivi ).size();
-
+        return get_active_universe().size();
     }
 
-    public Persona get_persona(int i){
+    // Ritorna la classe della persona contenuta nell'universo attivo all'indice i
+    // se l'indice non è presente nell'universo attivo, genera un eccezione
+    public Persona get_persona(int i) throws NullPointerException {
         try{
             return get_active_universe().get(i);
         }
-        catch (IndexOutOfBoundsException  e){
-            return get_active_universe().get(0);
+        catch (IndexOutOfBoundsException e){
+            throw new NullPointerException();
         }
 
     }
