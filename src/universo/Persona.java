@@ -12,20 +12,18 @@ public class Persona {
     // Variabili statiche (globali)
     private static int master_id = 0;
 
-
-
-    private boolean is_alive = true;
+    private boolean is_alive = true; // Variabile per indicare se l'utente è in vita
     private int TTL; // Time to live, tempo di vita da Variabile.MinVita a 365 cicli
     private int id; // ID di identitificazione da 0 a infinito
 
     // Conoscenti
-    private List< Entry<Persona,Integer> > Relation_board = new Vector<>();
+    private List< Entry<Persona, Integer> > Relation_board = new Vector<>();
 
     // Messaggi
     private List<Integer> Messaggi = new Vector<>();
 
     // Feedback
-    private List<Integer>Feedback = new Vector<>();
+    private List<Integer> Feedback = new Vector<>();
 
 
     // Alla creazione dell'utente
@@ -93,11 +91,23 @@ public class Persona {
         return j;
     }
 
-
-    public List<Entry<Persona, Integer>> get_Relations(){
+    // Mostra la lista delle relazioni che l'utente ha
+    public List< Entry<Persona, Integer> > get_Relations(){
         return Relation_board;
     }
 
+
+    public void Parla(){
+
+    }
+
+    public void Rispondi(){
+
+    }
+
+    public void Risposta(){
+
+    }
 
     // Modifica dei valori nel Tempo
     public void tempo_trascorso(){

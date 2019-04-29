@@ -24,8 +24,12 @@ public class Variabile {
     public static final int MaxNumConoscenti = 10;
 
 
-
-
+    /*
+     * Variabili globali di utlità
+     *
+     */
+    // Delay del Tempo
+    public static int DelayTempo = 500;
 
     public Variabile(){}
 
