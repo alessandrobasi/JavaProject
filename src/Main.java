@@ -11,14 +11,11 @@
  *///A Social Game System (SGS)
 
 import universo.Universo;
+import GlobalVar.Variabile;
 
 public class Main {
 
-
     public static void main(String[] args){
-
-        int Utenti = 1000;
-        int Limite = 500;
 
         // Program Arguments
         // -U [Numero] : Utenti da mettere nell'arena
@@ -29,18 +26,18 @@ public class Main {
 
                     case "-U":
                         try{
-                            Utenti = Integer.parseInt(args[i+1]);
+                            Variabile.Utenti = Integer.parseInt(args[i+1]);
                         }
                         catch (NumberFormatException e){
-                            Utenti = 99;
+                            Variabile.Utenti = 99;
                         }
                         break;
                     case "-L":
                         try{
-                            Limite = Integer.parseInt(args[i+1]);
+                            Variabile.UtentiAttivi = Integer.parseInt(args[i+1]);
                         }
                         catch (NumberFormatException e){
-                            Limite = Utenti/2;
+                            Variabile.UtentiAttivi = Variabile.Utenti/2;
                         }
                         break;
                     case "-?":
@@ -58,7 +55,7 @@ public class Main {
 
         // Creazione universo
         // ( Grandezza universo, Numero di persone attive )
-        Universo mondo1 = new Universo(Utenti,Limite);
+        Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
 
 
 

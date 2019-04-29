@@ -1,5 +1,7 @@
 package universo;
 
+import GlobalVar.Variabile;
+
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Random;
 import java.util.List;
@@ -9,11 +11,11 @@ import java.util.Map.Entry;
 public class Persona {
     // Variabili statiche (globali)
     private static int master_id = 0;
-    private static final int vita = 40;
-    private static final int num_conoscenti = 10;
+
+
 
     private boolean is_alive = true;
-    private int TTL; // Time to live, tempo di vita da 35 a 365 cicli
+    private int TTL; // Time to live, tempo di vita da Variabile.MinVita a 365 cicli
     private int id; // ID di identitificazione da 0 a infinito
 
     // Conoscenti
@@ -34,9 +36,9 @@ public class Persona {
         this.id = master_id++;
 
         // Genero un numero che indica quanto tempo vive l'utente
-        this.TTL = rand.nextInt((365-vita)) + vita; // [vita - 365]
+        this.TTL = rand.nextInt((365-Variabile.MinVita)) + Variabile.MinVita; // [Variabile.MinVita - 365]
 
-        for (int i = 0; i< num_conoscenti; i++){
+        for (int i = 0; i< Variabile.MaxNumConoscenti; i++){
             this.Relation_board.add( null );
         }
 
@@ -58,9 +60,9 @@ public class Persona {
             Random rand = new Random();
 
 
-            int i = rand.nextInt((num_conoscenti-1)) + 1;
+            int i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
             while(Relation_board.get(i) != null ){
-                i = rand.nextInt((num_conoscenti-1)) + 1;
+                i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
             }
 
 
@@ -81,9 +83,9 @@ public class Persona {
     public int run_acquaintances(Persona conoscente, int i){
         Random rand = new Random();
 
-        int j = rand.nextInt((num_conoscenti-1)) + 1;
+        int j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
         while(Relation_board.get(j)!= null){
-            j = rand.nextInt((num_conoscenti-1)) + 1;
+            j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
         }
 
         Relation_board.add(j, new SimpleEntry<>(conoscente, i));

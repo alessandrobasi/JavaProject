@@ -2,7 +2,7 @@ package universo;
 
 import Relation_board.Relation_board;
 
-public class Main {
+public class Start {
 
 
     public static void main(String[] args){
