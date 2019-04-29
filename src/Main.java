@@ -4,9 +4,11 @@
  *
  * Argomenti programma:
  *
- * -?          : Mostra l'help
- * -U [numero] : Imposta un valore per il numero massimo di utenti nell'iniverso     ( Default: 1000 )
- * -L [numero] : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )
+ * -?                : Mostra l'help
+ * -U [numero]       : Imposta un valore per il numero massimo di utenti nell'iniverso     ( Default: 1000 )
+ * -L [numero]       : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )
+ * -C [numero]       : Imposta un valore per il numero di conoscenti massimi               ( Default: 10   )
+ * -T [millisecondi] : Imposta un valore per la lentezza del tempo                         ( Default: 500  )
  *
  *///A Social Game System (SGS)
 
@@ -18,7 +20,6 @@ public class Main {
     public static void main(String[] args){
 
         // Program Arguments
-        // -U [Numero] : Utenti da mettere nell'arena
         for(int i = 0; i< args.length; i++){
 
             if(args[i].startsWith("-")){
@@ -40,8 +41,34 @@ public class Main {
                             Variabile.UtentiAttivi = Variabile.Utenti/2;
                         }
                         break;
+                    case "-C":
+                        try{
+                            Variabile.MaxNumConoscenti = Integer.parseInt(args[i+1]);
+                        }
+                        catch (NumberFormatException e){
+                            Variabile.MaxNumConoscenti = 10;
+                        }
+                        break;
+                    case "-T":
+                        try{
+                            Variabile.DelayTempo = Integer.parseInt(args[i+1]);
+                        }
+                        catch (NumberFormatException e){
+                            Variabile.DelayTempo = 500;
+                        }
+                        break;
                     case "-?":
-                        System.out.println("Argomenti disponibili\n"+"-? : Mostra questo help\n"+"-U : Utenti da mettere nell'arena\n");
+                        System.out.println(" * \n" +
+                                " * A Social Game System (SGS)\n" +
+                                " *\n" +
+                                " * Argomenti programma:\n" +
+                                " *\n" +
+                                " * -?                : Mostra l'help\n" +
+                                " * -U [numero]       : Imposta un valore per il numero massimo di utenti nell'iniverso     ( Default: 1000 )\n" +
+                                " * -L [numero]       : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )\n" +
+                                " * -C [numero]       : Imposta un valore per il numero di conoscenti massimi               ( Default: 10   )\n" +
+                                " * -T [millisecondi] : Imposta un valore per la lentezza del tempo                         ( Default: 500  )\n" +
+                                " * \n");
                         return;
                     default:
                         break;
@@ -59,7 +86,7 @@ public class Main {
 
 
 
-        System.out.println( mondo1.get_size() );
+        System.out.println("Persone attive: " + mondo1.get_size() );
 
         //mondo1.get_persona(2).get_info();
 
@@ -67,7 +94,8 @@ public class Main {
 
         while(mondo1.Tempo()){
 
-
+            // Eventi del mondo
+            // Casualità
 
         }
 

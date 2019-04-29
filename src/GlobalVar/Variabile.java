@@ -7,9 +7,9 @@ public class Variabile {
      *
      */
     // Utenti totali di Default
-    public static int Utenti = 1000;
+    public static int Utenti = 1000;  // -U
     // Utenti Attivi di Default
-    public static int UtentiAttivi = 500;
+    public static int UtentiAttivi = 500;  // -L
 
     // Numero minimo di utenti per far esistere l'Universo
     public static int MinNumLife = 2;
@@ -19,9 +19,9 @@ public class Variabile {
      *
      */
     // Tempo di vita minimo di un utente
-    public static final int MinVita = 40;
+    public static int MinVita = 40;
     // Numero massimo di conoscenti che una Persona può avere
-    public static final int MaxNumConoscenti = 10;
+    public static int MaxNumConoscenti = 10;  // -C
 
 
     /*
@@ -29,7 +29,7 @@ public class Variabile {
      *
      */
     // Delay del Tempo
-    public static int DelayTempo = 500;
+    public static int DelayTempo = 500;   // -T
 
     public Variabile(){}
 
