@@ -5,7 +5,6 @@ import Relation_board.Relation_board;
 public class Start {
 
 
-
     public static void main(String[] args){
 
         Persona numero1 = new Persona();
