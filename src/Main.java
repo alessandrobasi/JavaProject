@@ -57,6 +57,14 @@ public class Main {
                             Variabile.DelayTempo = 500;
                         }
                         break;
+                    case "-V":
+                        try{
+                            Variabile.MinVita = Integer.parseInt(args[i+1]);
+                        }
+                        catch (NumberFormatException e){
+                            Variabile.MinVita = 40;
+                        }
+                        break;
                     case "-?":
                         System.out.println(" * \n" +
                                 " * A Social Game System (SGS)\n" +
@@ -68,7 +76,8 @@ public class Main {
                                 " * -L [numero]       : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )\n" +
                                 " * -C [numero]       : Imposta un valore per il numero di conoscenti massimi               ( Default: 10   )\n" +
                                 " * -T [millisecondi] : Imposta un valore per la lentezza del tempo                         ( Default: 500  )\n" +
-                                " * \n");
+                                " * -V [numero]       : Imposta un valora per la vita minima degli utenti                   ( Default: 40   )\n" +
+                                " * ");
                         return;
                     default:
                         break;
