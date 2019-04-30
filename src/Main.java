@@ -104,7 +104,7 @@ public class Main {
         while(mondo1.Tempo()){
 
             // Eventi del mondo
-            // Casualità
+            // Casualità 
 
         }
 
