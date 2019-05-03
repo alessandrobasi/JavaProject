@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
-public class Universo extends Thread{
+public class Universo {
     
     // Lista di tutte le persone (all'inizio vuota)
     List<Persona> elementi = new Vector<>();
