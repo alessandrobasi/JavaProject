@@ -1,8 +1,10 @@
 package universo;
 
+import Errors.FullVectorException;
 import GlobalVar.Variabile;
 
 import java.util.AbstractMap.SimpleEntry;
+import java.util.Collection;
 import java.util.Random;
 import java.util.List;
 import java.util.Vector;
@@ -51,16 +53,26 @@ public class Persona {
     }
 
     // Aggiungi conoscente nelle relazioni
-    public void add_acquaintances(Persona conoscente){
+    public synchronized void add_acquaintances(Persona conoscente) throws FullVectorException {
 
         // Se l'utente è vivo
         if (this.is_alive) {
             Random rand = new Random();
 
-
             int i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
-            while(Relation_board.get(i) != null ){
-                i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
+
+            boolean check = true;
+            for (i = 1; i<Variabile.MaxNumConoscenti; i++){
+                if (Relation_board.get(i) != null){
+                    i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
+                }
+                else{
+                    check = !check;
+                    break;
+                }
+            }
+            if (check){
+                throw new Errors.FullVectorException("Conoscenti Pieni");
             }
 
 
@@ -78,13 +90,26 @@ public class Persona {
     }
 
     // Aggiungi al conoscente la relazione alla posizione j di <Persona,i> ritorna j
-    public int run_acquaintances(Persona conoscente, int i){
+    public synchronized int run_acquaintances(Persona conoscente, int i) throws FullVectorException {
         Random rand = new Random();
 
         int j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
-        while(Relation_board.get(j)!= null){
-            j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
+
+        boolean check = true;
+        for (i = 1; i<Variabile.MaxNumConoscenti; i++){
+            if (Relation_board.get(i) != null){
+                i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
+            }
+            else{
+                check = !check;
+                break;
+            }
         }
+        if (check){
+            throw new Errors.FullVectorException("Conoscenti Pieni");
+        }
+
+
 
         Relation_board.add(j, new SimpleEntry<>(conoscente, i));
 
@@ -97,6 +122,10 @@ public class Persona {
     }
 
 
+    /*
+    * finire queste funzioni per il dialogo delle persone
+    *
+    */
     public void Parla(){
 
     }
@@ -109,8 +138,9 @@ public class Persona {
 
     }
 
+
     // Modifica dei valori nel Tempo
-    public void tempo_trascorso(){
+    public synchronized void tempo_trascorso(){
 
         // Se l'utente è vivo
         if (this.is_alive){

@@ -9,9 +9,11 @@
  * -L [numero]       : Imposta un valore per il numero di utenti attivi all'avvio          ( Default: 500  )
  * -C [numero]       : Imposta un valore per il numero di conoscenti massimi               ( Default: 10   )
  * -T [millisecondi] : Imposta un valore per la lentezza del tempo                         ( Default: 500  )
+ * -V [numero]       : Imposta un valora per la vita minima degli utenti                   ( Default: 40   )
  *
  *///A Social Game System (SGS)
 
+import universo.Tempo;
 import universo.Universo;
 import GlobalVar.Variabile;
 
@@ -93,20 +95,15 @@ public class Main {
         // ( Grandezza universo, Numero di persone attive )
         Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
 
-
-
         System.out.println("Persone attive: " + mondo1.get_size() );
 
-        //mondo1.get_persona(2).get_info();
+        Tempo mondo = new Tempo(mondo1);
+        mondo.setName("tempo");
+
+        // Big Bang
+        mondo.start();
 
 
-
-        while(mondo1.Tempo()){
-
-            // Eventi del mondo
-            // Casualità 
-
-        }
 
     }
 

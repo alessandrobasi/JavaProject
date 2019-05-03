@@ -73,6 +73,7 @@ public class Universo {
     }
 
     // Tempo
+    /*
     public boolean Tempo(){
         // Contatore delle persone vive nell'universo attivo
         int persone_vive  = 0;
@@ -107,7 +108,7 @@ public class Universo {
         return true;
 
     }
-
+    */
 
     // Incrementa l'universo attivo di 1 (Aggiungi un nuovo utente)
     public void add_life(){
