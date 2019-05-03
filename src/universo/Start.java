@@ -1,6 +1,9 @@
 package universo;
 
+import GlobalVar.Variabile;
 import Relation_board.Relation_board;
+
+import java.security.PublicKey;
 
 public class Start {
 
@@ -15,13 +18,6 @@ public class Start {
         numero1.get_info();
 
         numero2.get_info();
-
-
-        numero1.add_acquaintances(numero2);
-
-        Universo a = new Universo(10);
-
-        System.out.println( a.get_size() );
 
 
 

@@ -12,6 +12,7 @@
  *
  *///A Social Game System (SGS)
 
+import universo.Tempo;
 import universo.Universo;
 import GlobalVar.Variabile;
 
@@ -84,20 +85,16 @@ public class Main {
         // ( Grandezza universo, Numero di persone attive )
         Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
 
-
-
         System.out.println("Persone attive: " + mondo1.get_size() );
 
-        //mondo1.get_persona(2).get_info();
+        Tempo mondo = new Tempo(mondo1);
+        mondo.setName("tempo");
+
+        // Big Bang
+        mondo.start();
 
 
 
-        while(mondo1.Tempo()){
-
-            // Eventi del mondo
-            // Casualità
-
-        }
 
     }
 

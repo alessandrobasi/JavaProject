@@ -53,7 +53,7 @@ public class Persona {
     }
 
     // Aggiungi conoscente nelle relazioni
-    public void add_acquaintances(Persona conoscente) throws FullVectorException {
+    public synchronized void add_acquaintances(Persona conoscente) throws FullVectorException {
 
         // Se l'utente è vivo
         if (this.is_alive) {
@@ -90,7 +90,7 @@ public class Persona {
     }
 
     // Aggiungi al conoscente la relazione alla posizione j di <Persona,i> ritorna j
-    public int run_acquaintances(Persona conoscente, int i) throws FullVectorException {
+    public synchronized int run_acquaintances(Persona conoscente, int i) throws FullVectorException {
         Random rand = new Random();
 
         int j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
@@ -122,6 +122,10 @@ public class Persona {
     }
 
 
+    /*
+    * finire queste funzioni per il dialogo delle persone
+    *
+    */
     public void Parla(){
 
     }
@@ -134,8 +138,9 @@ public class Persona {
 
     }
 
+
     // Modifica dei valori nel Tempo
-    public void tempo_trascorso(){
+    public synchronized void tempo_trascorso(){
 
         // Se l'utente è vivo
         if (this.is_alive){
