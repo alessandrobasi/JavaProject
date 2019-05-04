@@ -21,11 +21,11 @@ public class Persona {
     // Conoscenti
     private List< Entry<Persona, Integer> > Relation_board = new Vector<>();
 
-    // Messaggi
-    private List<Integer> Messaggi = new Vector<>();
+    // Messaggi ricevuti dagli utenti - Profili
+    private List< Integer > Messaggi = new Vector<>();
 
-    // Feedback
-    private List<Integer> Feedback = new Vector<>();
+    // Feedback - risposta ai messaggi degli utenti
+    private List< Integer> Feedback = new Vector<>();
 
 
     // Alla creazione dell'utente
@@ -44,6 +44,12 @@ public class Persona {
 
         // Inserisco nella lista delle relazioni, alla posizione 0 l'utente stesso
         this.Relation_board.add( 0,new SimpleEntry<>(this,0) );
+
+        // Umore iniziale dell'utente numero casuale tra 10 e 100
+        this.Messaggi.add(0, (rand.nextInt( 90 ) + 10 ) );
+
+        // ?? Feedback di se stesso ??
+        this.Feedback.add(0,null);
 
     }
 
