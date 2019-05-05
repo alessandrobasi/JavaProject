@@ -152,28 +152,30 @@ public class Persona {
     *
     */
 
-    public void get_msg(int index, int msg){
-        Messaggi.set(index, msg);
-        Lavora_MSG();
-    }
-
     // Invia messaggi (numero -> Relation.Utente -> Relation.Utente.Messaggi) ai suoi conoscenti
     public void Parla(){
 
         Random rand = new Random();
 
-
-
+        // Per ogni persona nella lista dei conoscenti manda un messaggio ad ogni conoscente,
+        // il messaggio viene generato in base all'umore di chi invia il messaggio e un numero casuale per prendere il valore del msg
         for (Entry<Persona, Integer> coppia : Relation_board.subList(1,Variabile.MaxNumConoscenti) ){
 
             if (coppia != null){
-
-                coppia.getKey().get_msg(coppia.getValue(), Umore.Gen(Relation_board.get(0).getValue(),rand.nextInt(100)) );
+                // Prendi la classe dell'utente da quella chiama la classe get_msg, gli viene passato l'index dell'utente che sta inviando il msg e il msg
+                // il msg viene generato in base all'umore dell'utente che lo invia
+                coppia.getKey().get_msg(coppia.getValue(), Umore.Gen( Relation_board.get(0).getValue(), rand.nextInt(100)) );
 
             }
 
         }
 
+    }
+
+    // L'utente prende il messaggio ricevuto (setta la posizione nella lista Messaggi) ed elabora una risposta
+    public void get_msg(int index, int msg){
+        Messaggi.set(index, msg);
+        Lavora_MSG();
     }
 
     // Prende il messaggio (numero -> ELABORO -> this.Feedback) ricevuto
