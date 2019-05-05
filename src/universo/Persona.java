@@ -41,16 +41,20 @@ public class Persona {
 
         for (int i = 0; i< Variabile.MaxNumConoscenti; i++){
             this.Relation_board.add( null );
+            this.Messaggi.add( null );
+            this.Feedback.add( null );
         }
 
         // Inserisco nella lista delle relazioni, alla posizione 0 il benessere dell'utente
-        this.Relation_board.add( 0,new SimpleEntry<>(this,0) );
+        this.Relation_board.set( 0,new SimpleEntry<>(this,rand.nextInt(100)) );
+
 
         // Umore iniziale dell'utente numero casuale tra 10 e 100
-        this.Messaggi.add(0, (rand.nextInt( 90 ) + 10 ) );
+        this.Messaggi.set(0, (rand.nextInt( 90 ) + 10 ) );
+
 
         // ???? Feedback di se stesso ????
-        this.Feedback.add(0,null);
+        this.Feedback.set(0,null);
 
     }
 
@@ -62,7 +66,7 @@ public class Persona {
                 "In vita: " + is_alive + "\n" +
                 "ID univoco: " + id + "\n" +
                 "Tempo di vita rimanente: " + TTL + "\n" +
-                "Benessere: " + Relation_board.get(0) + "\n" +
+                "Benessere: " + Relation_board.get(0).getValue() + "\n" +
                 "Umore: " + Messaggi.get(0) + "\n" );
 
     }
@@ -97,7 +101,7 @@ public class Persona {
             if (conoscente.is_alive()) {
                 int j = conoscente.run_acquaintances(this, i);
 
-                Relation_board.add(i, new SimpleEntry<>(conoscente, j));
+                Relation_board.set(i, new SimpleEntry<>(conoscente, j));
 
 
             }
@@ -128,7 +132,7 @@ public class Persona {
 
 
 
-        Relation_board.add(j, new SimpleEntry<>(conoscente, i));
+        Relation_board.set(j, new SimpleEntry<>(conoscente, i));
 
         return j;
     }
@@ -139,13 +143,36 @@ public class Persona {
         return Relation_board;
     }
 
+    public List< Integer > get_Messaggi(){
+        return Messaggi;
+    }
 
     /*
     * finire queste funzioni per il dialogo delle persone
     *
     */
+
+    public void get_msg(int index, int msg){
+        Messaggi.set(index, msg);
+        Lavora_MSG();
+    }
+
     // Invia messaggi (numero -> Relation.Utente -> Relation.Utente.Messaggi) ai suoi conoscenti
     public void Parla(){
+
+        Random rand = new Random();
+
+
+
+        for (Entry<Persona, Integer> coppia : Relation_board.subList(1,Variabile.MaxNumConoscenti) ){
+
+            if (coppia != null){
+
+                coppia.getKey().get_msg(coppia.getValue(), Umore.Gen(Relation_board.get(0).getValue(),rand.nextInt(100)) );
+
+            }
+
+        }
 
     }
 
