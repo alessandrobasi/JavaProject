@@ -1,10 +1,6 @@
 package universo;
 
 import Errors.FullVectorException;
-import GlobalVar.Variabile;
-import Relation_board.Relation_board;
-
-import java.security.PublicKey;
 
 public class Start {
 
@@ -24,7 +20,6 @@ public class Start {
             numero1.add_acquaintances(numero2);
         }
         catch (FullVectorException e){
-            ;
         }
 
         numero1.Parla();

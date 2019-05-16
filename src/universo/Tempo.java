@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Tempo extends Thread {
 
-    private Universo universo;
+    private final Universo universo;
 
     public Tempo(Universo mondo){
 
