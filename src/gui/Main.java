@@ -1,46 +1,67 @@
 package gui;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
 
-    private static JFrame f = new JFrame("GUI Name");//creating instance of JFrame
+    private static JFrame f = new JFrame("A Social Game System (SGS)");//creating instance of JFrame
+
+    private static JLabel Empty = new JLabel();
 
     public static void main(String[] args) {
 
+        f.setPreferredSize(new Dimension(512,512));
+
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        f.setLayout(new FlowLayout(FlowLayout.CENTER));
+
         Home();
+
     }
 
     private static void Home(){
 
-        //Make the center component big, since that's the
-        //typical usage of BorderLayout.
-
         JPanel controls = new JPanel();
-        controls.setLayout(new GridLayout(2,0,50,50));
+
+        //controls.setPreferredSize(new Dimension(512,512));
+
+        controls.setLayout(new GridLayout(3,0,100,100));
 
 
 
-        JButton button = new JButton("Button 2 (CENTER)");
-        button.setPreferredSize(new Dimension(100, 50));
+        JButton avviaGioco = new JButton("Avvia Gioco");
+        avviaGioco.setSize(new Dimension(3, 3));
+
+        avviaGioco.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("bottone cliccato");
+                Gioco();
+
+            }
+        });
+
         JLabel TestoBenvenuto = new JLabel();
-        TestoBenvenuto.setText(
-                "" +
-                        "<html>" +
-                        "<div style='text-align: center;'>" +
-                        "A Social Game System (SGS)" +
-                        "</div>" +
-                        "</html>"
+        TestoBenvenuto.setText("" +
+                "<html>" +
+                "A Social Game System (SGS)" +
+                "<br/>" +
+                "Creato da: " +
+                "</html>"
         );
 
-        controls.add(TestoBenvenuto);
-        controls.add(button);
 
-        f.add(controls, BorderLayout.CENTER);
+        controls.add(Empty, BorderLayout.CENTER);
+        controls.add(TestoBenvenuto, BorderLayout.CENTER);
+        controls.add(avviaGioco, BorderLayout.CENTER);
+
+
+        f.add(controls);
 
 
         f.pack();
@@ -48,7 +69,11 @@ public class Main extends JFrame {
     }
 
 
-    private static void Griglia(){
+    private static void Gioco(){
+
+        JFrame gioco = new JFrame("A Social Game System (SGS)");
+
+        f.setVisible(false);
         /*
         JButton b = new JButton("click");//creating instance of JButton
         b.setBounds(0,0,100, 40);//x axis, y axis, width, height
@@ -83,12 +108,12 @@ public class Main extends JFrame {
         controls.add(new JButton("5.1"));
 
         //Set up the content pane.
-        f.add(controls);
+        gioco.add(controls);
 
         //f.addComponentsToPane(f.getContentPane());
         //Display the window.
-        f.pack();
-        f.setVisible(true);
+        gioco.pack();
+        gioco.setVisible(true);
 
     }
 
