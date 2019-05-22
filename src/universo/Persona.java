@@ -4,10 +4,10 @@ import Errors.FullVectorException;
 import GlobalVar.Variabile;
 
 import java.util.AbstractMap.SimpleEntry;
-import java.util.Random;
 import java.util.List;
-import java.util.Vector;
 import java.util.Map.Entry;
+import java.util.Random;
+import java.util.Vector;
 
 public class Persona {
     // Variabili statiche (globali)
@@ -16,7 +16,7 @@ public class Persona {
 
     private boolean is_alive = true; // Variabile per indicare se l'utente è in vita
     private int TTL; // Time to live, tempo di vita da Variabile.MinVita a 365 cicli
-    private int id; // ID di identitificazione da 0 a infinito
+    private final int id; // ID di identitificazione da 0 a infinito
 
     // Conoscenti dell'utente
     private List< Entry<Persona, Integer> > Relation_board = new Vector<>();
@@ -82,12 +82,12 @@ public class Persona {
             int i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
 
             boolean check = true;
-            for (i = 1; i<Variabile.MaxNumConoscenti; i++){
+            for (int k = 1; k<Variabile.MaxNumConoscenti; k++){
                 if (Relation_board.get(i) != null){
                     i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
                 }
                 else{
-                    check = !check;
+                    check = false;
                     break;
                 }
             }
@@ -117,12 +117,12 @@ public class Persona {
         int j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
 
         boolean check = true;
-        for (i = 1; i<Variabile.MaxNumConoscenti; i++){
-            if (Relation_board.get(i) != null){
-                i = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
+        for (int k = 1; k<Variabile.MaxNumConoscenti; k++){
+            if (Relation_board.get(j) != null){
+                j = rand.nextInt((Variabile.MaxNumConoscenti-1)) + 1;
             }
             else{
-                check = !check;
+                check = false;
                 break;
             }
         }
@@ -147,6 +147,10 @@ public class Persona {
         return Messaggi;
     }
 
+    public List< Integer > get_Feedback(){
+        return Feedback;
+    }
+
     /*
     * finire queste funzioni per il dialogo delle persone
     *
@@ -164,7 +168,7 @@ public class Persona {
             if (coppia != null){
                 // Prendi la classe dell'utente da quella chiama la classe get_msg, gli viene passato l'index dell'utente che sta inviando il msg e il msg
                 // il msg viene generato in base all'umore dell'utente che lo invia
-                coppia.getKey().get_msg(coppia.getValue(), Umore.Gen( Relation_board.get(0).getValue(), rand.nextInt(100)) );
+                coppia.getKey().get_msg(coppia.getValue(), Umore.Gen( Relation_board.get(0).getValue(), rand.nextInt(100) ) );
 
             }
 
@@ -175,16 +179,32 @@ public class Persona {
     // L'utente prende il messaggio ricevuto (setta la posizione nella lista Messaggi) ed elabora una risposta
     public void get_msg(int index, int msg){
         Messaggi.set(index, msg);
-        Lavora_MSG();
+        Lavora_MSG(index, msg);
+
     }
 
-    // Prende il messaggio (numero -> ELABORO -> this.Feedback) ricevuto
-    public void Lavora_MSG(){
+    // Prende il messaggio (numero -> ELABORO -> this.Feedback) ricevuto e genera una risposta
+    public void Lavora_MSG(int index, int msg){
+
+        Random rand = new Random();
+
+        Feedback.set(index, Umore.Gen(msg, rand.nextInt(100) ) );
 
     }
 
     // Prende il messaggio (Relation.Utente.Feedback -> numero -> this.Messaggi || ELABORO ) di risposta
     public void Risposta(){
+
+        for (Entry<Persona, Integer> coppia : Relation_board.subList(1,Variabile.MaxNumConoscenti) ){
+
+            if (coppia != null){
+
+                // COSA FARE???
+                coppia.getKey().get_Feedback().get(coppia.getValue()) ;
+
+            }
+
+        }
 
     }
 
