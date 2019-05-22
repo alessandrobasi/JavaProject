@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Main extends JFrame {
+public class GUI extends JFrame {
 
     private static JFrame f = new JFrame("A Social Game System (SGS)");//creating instance of JFrame
 
@@ -18,6 +18,8 @@ public class Main extends JFrame {
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
+
+
 
     public static void main(String[] args) {
 

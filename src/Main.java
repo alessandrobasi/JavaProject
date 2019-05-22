@@ -13,9 +13,10 @@
  *
  *///A Social Game System (SGS)
 
+import GlobalVar.Variabile;
+import gui.GUI;
 import universo.Tempo;
 import universo.Universo;
-import GlobalVar.Variabile;
 
 public class Main {
 
@@ -89,7 +90,7 @@ public class Main {
 
         }
 
-
+        GUI.main(null);
 
         // Creazione universo
         // ( Grandezza universo, Numero di persone attive )
