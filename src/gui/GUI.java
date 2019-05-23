@@ -13,11 +13,9 @@ public class GUI extends JFrame {
 
     private static JFrame f = new JFrame("A Social Game System (SGS)");//creating instance of JFrame
 
-
+    private static JPanel controls = new JPanel();
 
     private static JLabel Empty = new JLabel();
-
-
 
     private static void setFrameOption(JFrame frame){
         frame.setPreferredSize(new Dimension(512,512));
@@ -38,25 +36,22 @@ public class GUI extends JFrame {
 
     private static void Home(){
 
-        JPanel controls = new JPanel();
-
-        //controls.setPreferredSize(new Dimension(512,512));
-
         controls.setLayout(new GridLayout(3,0,100,100));
 
 
 
-        JButton avviaGioco = new JButton("Avvia Gioco");
-        avviaGioco.setSize(new Dimension(3, 3));
+        JButton impostazioni = new JButton("Avvia Gioco");
+        impostazioni.setSize(new Dimension(3, 3));
 
-        avviaGioco.addActionListener(new ActionListener() {
+        impostazioni.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("bottone cliccato");
-                Gioco();
+                System.out.println("Impostazioni");
+                Setting();
 
             }
+
         });
 
         JLabel TestoBenvenuto = new JLabel();
@@ -71,7 +66,7 @@ public class GUI extends JFrame {
 
         controls.add(Empty, BorderLayout.CENTER);
         controls.add(TestoBenvenuto, BorderLayout.CENTER);
-        controls.add(avviaGioco, BorderLayout.CENTER);
+        controls.add(impostazioni, BorderLayout.CENTER);
 
 
         f.add(controls);
@@ -81,12 +76,69 @@ public class GUI extends JFrame {
         f.setVisible(true);
     }
 
+    private static void Setting(){
+
+
+        controls.removeAll();
+
+        controls.setLayout(new GridLayout(4,1,100,50));
+
+        controls.updateUI();
+
+        JButton avviaGioco = new JButton("Avvia Gioco");
+
+        avviaGioco.setSize(new Dimension(3, 3));
+
+        avviaGioco.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Avvia gioco");
+                // TODO: Prendere informazioni immesse nei campi
+                Gioco();
+
+            }
+        });
+
+        JLabel Testo = new JLabel();
+        Testo.setText("" +
+                "<html>" +
+                "Impostazioni" +
+                "</html>"
+        );
+
+        JLabel UtentiMassimi = new JLabel();
+        UtentiMassimi.setText("" +
+                "Utenti massimi");
+
+        JTextField NumeroMaxUtenti = new JTextField("1000",9);
+
+        JLabel UtentiAttivi = new JLabel();
+        UtentiAttivi.setText("" +
+                "Utenti attivi");
+
+        JTextField NumeroUtentiAttivi = new JTextField("500",5);
+
+
+
+        controls.add(Testo, BorderLayout.CENTER);
+        controls.add(Empty, BorderLayout.CENTER);
+
+        controls.add(UtentiMassimi, BorderLayout.CENTER);
+        controls.add(NumeroMaxUtenti, BorderLayout.CENTER);
+
+        controls.add(UtentiAttivi, BorderLayout.CENTER);
+        controls.add(NumeroUtentiAttivi, BorderLayout.CENTER);
+
+        controls.add(avviaGioco, BorderLayout.CENTER);
+
+    }
 
     private static void Gioco(){
 
-        JFrame gioco = new JFrame("A Social Game System (SGS)");
+        controls.removeAll();
 
-        setFrameOption(gioco);
+        controls.updateUI();
 
         // START GAME
         // Creazione universo
@@ -101,15 +153,10 @@ public class GUI extends JFrame {
         // Big Bang
         mondo.start();
 
-        f.setVisible(false);
-
-        // DA CONTINUARE
+        // TODO: DA CONTINUARE
         // https://stackoverflow.com/questions/11424180/drawing-with-graphics-and-with-widgets-in-japplet-swing
-        gioco.add(new JLabel("Da finire"));
+        controls.add(new JLabel("Da finire"));
 
-
-        gioco.pack();
-        gioco.setVisible(true);
 
     }
 
