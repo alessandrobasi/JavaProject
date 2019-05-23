@@ -1,5 +1,9 @@
 package gui;
 
+import GlobalVar.Variabile;
+import universo.Tempo;
+import universo.Universo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +13,11 @@ public class GUI extends JFrame {
 
     private static JFrame f = new JFrame("A Social Game System (SGS)");//creating instance of JFrame
 
+
+
     private static JLabel Empty = new JLabel();
+
+
 
     private static void setFrameOption(JFrame frame){
         frame.setPreferredSize(new Dimension(512,512));
@@ -18,7 +26,6 @@ public class GUI extends JFrame {
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
     }
-
 
 
     public static void main(String[] args) {
@@ -81,6 +88,18 @@ public class GUI extends JFrame {
 
         setFrameOption(gioco);
 
+        // START GAME
+        // Creazione universo
+        // ( Grandezza universo, Numero di persone attive )
+        Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
+
+        System.out.println("Persone attive: " + mondo1.get_size() );
+
+        Tempo mondo = new Tempo(mondo1);
+        mondo.setName("tempo");
+
+        // Big Bang
+        mondo.start();
 
         f.setVisible(false);
 

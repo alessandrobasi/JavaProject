@@ -151,10 +151,7 @@ public class Persona {
         return Feedback;
     }
 
-    /*
-    * finire queste funzioni per il dialogo delle persone
-    *
-    */
+
 
     // Invia messaggi (numero -> Relation.Utente -> Relation.Utente.Messaggi) ai suoi conoscenti
     public void Parla(){

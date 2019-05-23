@@ -15,8 +15,6 @@
 
 import GlobalVar.Variabile;
 import gui.GUI;
-import universo.Tempo;
-import universo.Universo;
 
 public class Main {
 
@@ -90,20 +88,8 @@ public class Main {
 
         }
 
+        // Start GUI
         GUI.main(null);
-
-        // Creazione universo
-        // ( Grandezza universo, Numero di persone attive )
-        Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
-
-        System.out.println("Persone attive: " + mondo1.get_size() );
-
-        Tempo mondo = new Tempo(mondo1);
-        mondo.setName("tempo");
-
-        // Big Bang
-        mondo.start();
-
 
 
     }
