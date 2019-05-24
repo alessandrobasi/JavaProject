@@ -2,6 +2,7 @@ package universo;
 
 import Errors.FullVectorException;
 import GlobalVar.Variabile;
+import gui.GUI;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
@@ -236,7 +237,8 @@ public class Persona implements InterfacePersona {
                 this.is_alive = false;
 
                 // Annuncia il decesso
-                System.out.println("Utente " + this.id + " è morto");
+                GUI.AppendToNotizie("Utente " + this.id + " è morto");
+                //System.out.println("Utente " + this.id + " è morto");
 
                 // ???? Avvisa i conoscenti ????
 

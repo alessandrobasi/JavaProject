@@ -134,10 +134,21 @@ public class GUI extends JFrame {
 
     }
 
+    private static JLabel Notizie = new JLabel();
+
+    public static void AppendToNotizie(String testo){
+
+        String temp = Notizie.getText().replace("<html>", "");
+        temp = temp.replace("</html>","");
+
+        Notizie.setText( "<html>" + temp + "<br/>" + testo + "</html>" );
+
+    }
+
     private static void Gioco(){
 
         controls.removeAll();
-
+        controls.setLayout(new GridLayout(1,1,1,1));
         controls.updateUI();
 
         // START GAME
@@ -145,7 +156,7 @@ public class GUI extends JFrame {
         // ( Grandezza universo, Numero di persone attive )
         Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
 
-        System.out.println("Persone attive: " + mondo1.get_size() );
+        //System.out.println("Persone attive: " + mondo1.get_size() );
 
         Tempo mondo = new Tempo(mondo1);
         mondo.setName("tempo");
@@ -157,6 +168,9 @@ public class GUI extends JFrame {
         // https://stackoverflow.com/questions/11424180/drawing-with-graphics-and-with-widgets-in-japplet-swing
         controls.add(new JLabel("Da finire"));
 
+        Notizie.setText("Persone attive: " + mondo1.get_size());
+
+        controls.add(Notizie);
 
     }
 

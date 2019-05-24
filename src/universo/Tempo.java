@@ -1,6 +1,7 @@
 package universo;
 
 import GlobalVar.Variabile;
+import gui.GUI;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,7 +42,10 @@ public class Tempo extends Thread implements InterfaceTempo {
         // End game
         // Se c'è una sola persona il gioco finisce
         if(persone_vive < Variabile.MinNumLife ){
-            System.out.println("Gioco finito, il mondo è morto, non ci sono abbastanza persone");
+
+            GUI.AppendToNotizie("Gioco finito, il mondo è morto, non ci sono abbastanza persone");
+
+            //System.out.println("Gioco finito, il mondo è morto, non ci sono abbastanza persone");
             return false;
         }
 
