@@ -5,7 +5,7 @@ import GlobalVar.Variabile;
 import java.util.List;
 import java.util.Vector;
 
-public class Universo {
+public class Universo implements InterfaceUniverso {
     
     // Lista di tutte le persone (all'inizio vuota)
     List<Persona> elementi = new Vector<>();
@@ -110,6 +110,7 @@ public class Universo {
     */
 
     // Incrementa l'universo attivo di 1 (Aggiungi un nuovo utente)
+    @Override
     public void add_life(){
 
         if ((Variabile.UtentiAttivi + 1) < Variabile.Utenti ) {
@@ -123,17 +124,20 @@ public class Universo {
     }
 
     // Ritorna gli utenti attivi dell'universo
+    @Override
     public List<Persona> get_active_universe(){
         return elementi.subList(0, Variabile.UtentiAttivi );
     }
 
     // Ritorna il numero di utenti attivi
+    @Override
     public int get_size(){
         return get_active_universe().size();
     }
 
     // Ritorna la classe della persona contenuta nell'universo attivo all'indice i
     // se l'indice non è presente nell'universo attivo, genera un eccezione
+    @Override
     public Persona get_persona(int i) throws NullPointerException {
         try{
             return get_active_universe().get(i);

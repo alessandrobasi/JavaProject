@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Vector;
 
-public class Persona {
+public class Persona implements InterfacePersona {
     // Variabili statiche (globali)
     // ID univoco di ogni utente
     private static int master_id = 0;
@@ -60,6 +60,7 @@ public class Persona {
 
 
     // Printa le informazioni dell'utente
+    @Override
     public void get_info(){
 
         System.out.println("" +
@@ -73,6 +74,7 @@ public class Persona {
 
 
     // Aggiungi conoscente nelle relazioni
+    @Override
     public synchronized void add_acquaintances(Persona conoscente) throws FullVectorException {
 
         // Se l'utente è vivo
@@ -111,6 +113,7 @@ public class Persona {
 
 
     // Aggiungi al conoscente la relazione alla posizione j di <Persona,i> ritorna j
+    @Override
     public synchronized int run_acquaintances(Persona conoscente, int i) throws FullVectorException {
         Random rand = new Random();
 
@@ -139,14 +142,17 @@ public class Persona {
 
 
     // Ritorna la lista delle relazioni che l'utente ha  ????
+    @Override
     public List< Entry<Persona, Integer> > get_Relations(){
         return Relation_board;
     }
 
+    @Override
     public List< Integer > get_Messaggi(){
         return Messaggi;
     }
 
+    @Override
     public List< Integer > get_Feedback(){
         return Feedback;
     }
@@ -154,6 +160,7 @@ public class Persona {
 
 
     // Invia messaggi (numero -> Relation.Utente -> Relation.Utente.Messaggi) ai suoi conoscenti
+    @Override
     public void Parla(){
 
         Random rand = new Random();
@@ -174,6 +181,7 @@ public class Persona {
     }
 
     // L'utente prende il messaggio ricevuto (setta la posizione nella lista Messaggi) ed elabora una risposta
+    @Override
     public void get_msg(int index, int msg){
         Messaggi.set(index, msg);
         Lavora_MSG(index, msg);
@@ -181,6 +189,7 @@ public class Persona {
     }
 
     // Prende il messaggio (numero -> ELABORO -> this.Feedback) ricevuto e genera una risposta
+    @Override
     public void Lavora_MSG(int index, int msg){
 
         Random rand = new Random();
@@ -190,6 +199,7 @@ public class Persona {
     }
 
     // Prende il messaggio (Relation.Utente.Feedback -> numero -> this.Messaggi || ELABORO ) di risposta
+    @Override
     public void Risposta(){
 
         for (Entry<Persona, Integer> coppia : Relation_board.subList(1,Variabile.MaxNumConoscenti) ){
@@ -209,6 +219,7 @@ public class Persona {
 
 
     // Modifica dei valori nel Tempo
+    @Override
     public synchronized void tempo_trascorso(){
 
         // Se l'utente è vivo
@@ -236,6 +247,7 @@ public class Persona {
     }
 
     // Restituisce true o false se l'utente è vivo o meno
+    @Override
     public boolean is_alive(){
         return is_alive;
     }

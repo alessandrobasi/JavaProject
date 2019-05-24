@@ -4,7 +4,7 @@ import GlobalVar.Variabile;
 
 import java.util.concurrent.TimeUnit;
 
-public class Tempo extends Thread {
+public class Tempo extends Thread implements InterfaceTempo {
 
     private final Universo universo;
 
@@ -15,6 +15,7 @@ public class Tempo extends Thread {
     }
 
     // Tempo
+    @Override
     public boolean Tempo(){
         // Contatore delle persone vive nell'universo attivo
         int persone_vive  = 0;
