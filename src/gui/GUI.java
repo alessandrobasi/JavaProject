@@ -30,6 +30,8 @@ public class GUI extends JFrame {
 
         setFrameOption(f);
 
+        controls.setBackground(Color.red);
+
         Home();
 
     }
@@ -69,7 +71,7 @@ public class GUI extends JFrame {
         controls.add(impostazioni, BorderLayout.CENTER);
 
 
-        f.add(controls);
+        f.add(controls,0);
 
 
         f.pack();
@@ -136,6 +138,8 @@ public class GUI extends JFrame {
 
     private static JLabel Notizie = new JLabel();
 
+    private static JScrollPane NotizieLista = new JScrollPane(Notizie);
+
     public static void AppendToNotizie(String testo){
 
         String temp = Notizie.getText().replace("<html>", "");
@@ -143,34 +147,45 @@ public class GUI extends JFrame {
 
         Notizie.setText( "<html>" + temp + "<br/>" + testo + "</html>" );
 
+        JScrollBar vertical = NotizieLista.getVerticalScrollBar();
+        vertical.setValue( vertical.getMaximum());
+
     }
 
     private static void Gioco(){
-
         controls.removeAll();
-        controls.setLayout(new GridLayout(1,1,1,1));
         controls.updateUI();
+
+        f.setLayout(new BorderLayout());
+
+        //controls.setBounds(0,0,512,512);
+        controls.setLayout(new GridBagLayout());
+
 
         // START GAME
         // Creazione universo
         // ( Grandezza universo, Numero di persone attive )
         Universo mondo1 = new Universo(Variabile.Utenti, Variabile.UtentiAttivi);
-
-        //System.out.println("Persone attive: " + mondo1.get_size() );
-
         Tempo mondo = new Tempo(mondo1);
         mondo.setName("tempo");
-
         // Big Bang
         mondo.start();
 
         // TODO: DA CONTINUARE
         // https://stackoverflow.com/questions/11424180/drawing-with-graphics-and-with-widgets-in-japplet-swing
-        controls.add(new JLabel("Da finire"));
+
+
+        NotizieLista.setPreferredSize(new Dimension(200, 250));
+        NotizieLista.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+
+
+        f.add(new JLabel("<html> Da finire </html>", SwingConstants.CENTER ), BorderLayout.PAGE_START , 0 );
+
 
         Notizie.setText("Persone attive: " + mondo1.get_size());
 
-        controls.add(Notizie);
+        f.add(NotizieLista, BorderLayout.WEST ,0);
 
     }
 
