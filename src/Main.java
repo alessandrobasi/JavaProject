@@ -89,7 +89,13 @@ public class Main {
         }
 
         // Start GUI
-        GUI.main(null);
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                GUI.main(null);
+            }
+        });
+
+
 
 
     }
