@@ -17,12 +17,20 @@ public class GUI extends JFrame {
 
     private static JLabel Empty = new JLabel();
 
+
+
     private static void setFrameOption(JFrame frame){
-        frame.setPreferredSize(new Dimension(512,512));
+        //frame.setPreferredSize(new Dimension(512,512));
+
+
+        frame.setSize(new Dimension(512,512));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        frame.setResizable(false);
+
     }
 
 
@@ -30,7 +38,7 @@ public class GUI extends JFrame {
 
         setFrameOption(f);
 
-        controls.setBackground(Color.red);
+        //controls.setBackground(Color.red);
 
         Home();
 
@@ -73,8 +81,6 @@ public class GUI extends JFrame {
 
         f.add(controls,0);
 
-
-        f.pack();
         f.setVisible(true);
     }
 
@@ -136,6 +142,7 @@ public class GUI extends JFrame {
 
     }
 
+
     private static JLabel Notizie = new JLabel();
 
     private static JScrollPane NotizieLista = new JScrollPane(Notizie);
@@ -152,9 +159,25 @@ public class GUI extends JFrame {
 
     }
 
+
+    //public static JPanel game = new JPanel();
+
+    public static Game game = new Game();
+
     private static void Gioco(){
+
+
         controls.removeAll();
+
+        controls.revalidate();
+
         controls.updateUI();
+
+
+
+        f.remove(controls);
+
+        f.setSize(new Dimension(1024, 512));
 
         f.setLayout(new BorderLayout());
 
@@ -174,18 +197,32 @@ public class GUI extends JFrame {
         // TODO: DA CONTINUARE
         // https://stackoverflow.com/questions/11424180/drawing-with-graphics-and-with-widgets-in-japplet-swing
 
+        f.add(new JLabel("<html> Da finire </html>", SwingConstants.CENTER ), BorderLayout.PAGE_START , 0 );
+
+
+
+
+
 
         NotizieLista.setPreferredSize(new Dimension(200, 250));
         NotizieLista.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-
-
-        f.add(new JLabel("<html> Da finire </html>", SwingConstants.CENTER ), BorderLayout.PAGE_START , 0 );
-
-
         Notizie.setText("Persone attive: " + mondo1.get_size());
 
+
+
+
+
+
+
+
+
         f.add(NotizieLista, BorderLayout.WEST ,0);
+
+
+        //game.setBackground(Color.RED);
+
+        f.add(game, BorderLayout.CENTER);
 
     }
 
