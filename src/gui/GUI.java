@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class GUI extends JFrame {
 
@@ -93,21 +94,6 @@ public class GUI extends JFrame {
 
         controls.updateUI();
 
-        JButton avviaGioco = new JButton("Avvia Gioco");
-
-        avviaGioco.setSize(new Dimension(3, 3));
-
-        avviaGioco.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Avvia gioco");
-                // TODO: Prendere informazioni immesse nei campi
-                Gioco();
-
-            }
-        });
-
         JLabel Testo = new JLabel();
         Testo.setText("" +
                 "<html>" +
@@ -127,7 +113,24 @@ public class GUI extends JFrame {
 
         JTextField NumeroUtentiAttivi = new JTextField("500",5);
 
+        JButton avviaGioco = new JButton("Avvia Gioco");
 
+        avviaGioco.setSize(new Dimension(3, 3));
+
+        avviaGioco.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Avvia gioco");
+                // TODO: Prendere informazioni immesse nei campi
+
+                Variabile.Utenti = Integer.parseInt(NumeroMaxUtenti.getText());
+                Variabile.UtentiAttivi = Integer.parseInt(NumeroUtentiAttivi.getText());
+
+                Gioco();
+
+            }
+        });
 
         controls.add(Testo, BorderLayout.CENTER);
         controls.add(Empty, BorderLayout.CENTER);
@@ -162,7 +165,7 @@ public class GUI extends JFrame {
 
     //public static JPanel game = new JPanel();
 
-    public static Game game = new Game();
+    public static Game game;
 
     private static void Gioco(){
 
@@ -181,8 +184,12 @@ public class GUI extends JFrame {
 
         f.setLayout(new BorderLayout());
 
-        //controls.setBounds(0,0,512,512);
         controls.setLayout(new GridBagLayout());
+
+        game = new Game();
+        f.add(game, BorderLayout.CENTER);
+
+        System.out.println(get_size());
 
 
         // START GAME
@@ -197,10 +204,8 @@ public class GUI extends JFrame {
         // TODO: DA CONTINUARE
         // https://stackoverflow.com/questions/11424180/drawing-with-graphics-and-with-widgets-in-japplet-swing
 
+
         f.add(new JLabel("<html> Da finire </html>", SwingConstants.CENTER ), BorderLayout.PAGE_START , 0 );
-
-
-
 
 
 
@@ -212,20 +217,19 @@ public class GUI extends JFrame {
 
 
 
-
-
-
-
-
         f.add(NotizieLista, BorderLayout.WEST ,0);
 
-
-        //game.setBackground(Color.RED);
-
-        f.add(game, BorderLayout.CENTER);
-
+        game.posizionaUtenti(game.getGraphics());
     }
 
+    public static Vector<Integer> get_size(){
+        Vector<Integer> grandezza = new Vector<>();
+
+        grandezza.add(game.getSize().width);  // X
+        grandezza.add(game.getSize().height); // y
+
+        return grandezza;
+    }
 
 
 }

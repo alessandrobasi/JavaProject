@@ -1,5 +1,8 @@
 package gui;
 
+import universo.Persona;
+import universo.Universo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -10,26 +13,35 @@ public class Game extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
-    /*
-    public void paint(Graphics g) {
-        Shape shape = new Rectangle2D.Float(100, 50, 80, 80);
-
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-
+        Shape shape = new Rectangle2D.Float(0,0,1,1);
         g2.fill(shape);
     }
-    */
-    public void paintComponent(Graphics g) {
+
+    public void posizionaUtenti(Graphics g) {
         super.paintComponent(g);
-
-        // Draw Text
-        g.drawString("This is my custom Panel!",10,20);
-
-        Shape shape = new Rectangle2D.Float(100, 50, 80, 80);
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.fill(shape);
+        for(Persona io : Universo.get_active_universe()){
+
+            Shape shape = new Rectangle2D.Float(io.BoardX, io.BoardY, 40, 40);
+            // Draw Text
+            g.drawString(Integer.toString((Integer) io.get_info().get(1))  ,io.BoardX+15,io.BoardY+50);
+
+            g2.fill(shape);
+        }
+
+
+
+
+
+
+
+
+
     }
 
 }

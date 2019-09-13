@@ -8,7 +8,7 @@ import java.util.Vector;
 public class Universo implements InterfaceUniverso {
     
     // Lista di tutte le persone (all'inizio vuota)
-    List<Persona> elementi = new Vector<>();
+    static List<Persona> elementi = new Vector<>();
     
 
     // Dio ( Spazio ) - Costruttori per creare l'universo e inizializzare la lista di utenti (Default: 1000 / di cui attivi: 500 )
@@ -124,8 +124,8 @@ public class Universo implements InterfaceUniverso {
     }
 
     // Ritorna gli utenti attivi dell'universo
-    @Override
-    public List<Persona> get_active_universe(){
+
+    public static List<Persona> get_active_universe(){
         return elementi.subList(0, Variabile.UtentiAttivi );
     }
 
@@ -147,7 +147,5 @@ public class Universo implements InterfaceUniverso {
         }
 
     }
-
-
 
 }

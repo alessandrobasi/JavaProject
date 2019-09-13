@@ -19,6 +19,10 @@ public class Persona implements InterfacePersona {
     private int TTL; // Time to live, tempo di vita da Variabile.MinVita a 365 cicli
     private final int id; // ID di identitificazione da 0 a infinito
 
+    public int BoardX = 0;
+    public int BoardY = 0;
+
+
     // Conoscenti dell'utente
     private List< Entry<Persona, Integer> > Relation_board = new Vector<>();
 
@@ -57,12 +61,16 @@ public class Persona implements InterfacePersona {
         // ???? Feedback di se stesso ????
         this.Feedback.set(0,null);
 
+
+        BoardX = rand.nextInt(GUI.get_size().get(0));
+        BoardY = rand.nextInt(GUI.get_size().get(1));
+
     }
 
 
     // Printa le informazioni dell'utente
-    @Override
-    public void get_info(){
+
+    public List<Object> get_info(){
 
         System.out.println("" +
                 "In vita: " + is_alive + "\n" +
@@ -71,6 +79,14 @@ public class Persona implements InterfacePersona {
                 "Benessere: " + Relation_board.get(0).getValue() + "\n" +
                 "Umore: " + Messaggi.get(0) + "\n" );
 
+        List<Object> info = new Vector<>();
+        info.add(is_alive);
+        info.add(id);
+        info.add(TTL);
+        info.add(Relation_board.get(0).getValue());
+        info.add(Messaggi.get(0));
+
+        return info;
     }
 
 

@@ -1,13 +1,11 @@
 package universo;
 
-import java.util.List;
-
 public interface InterfaceUniverso {
     // Incrementa l'universo attivo di 1 (Aggiungi un nuovo utente)
     void add_life();
 
     // Ritorna gli utenti attivi dell'universo
-    List<Persona> get_active_universe();
+    // List<Persona> get_active_universe();
 
     // Ritorna il numero di utenti attivi
     int get_size();
