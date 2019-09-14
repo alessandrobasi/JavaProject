@@ -177,7 +177,6 @@ public class GUI extends JFrame {
         controls.updateUI();
 
 
-
         f.remove(controls);
 
         f.setSize(new Dimension(1024, 512));
@@ -212,24 +211,36 @@ public class GUI extends JFrame {
         NotizieLista.setPreferredSize(new Dimension(200, 250));
         NotizieLista.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        Notizie.setText("Persone attive: " + mondo1.get_size());
-
-
-
 
         f.add(NotizieLista, BorderLayout.WEST ,0);
+        start_game();
+
+        Notizie.setText("Persone attive: " + mondo1.get_size());
+
+        mondo1.posizionaUtenti();
 
         game.posizionaUtenti(game.getGraphics());
     }
 
     public static Vector<Integer> get_size(){
         Vector<Integer> grandezza = new Vector<>();
-
-        grandezza.add(game.getSize().width);  // X
-        grandezza.add(game.getSize().height); // y
+        // TODO: sistemare game.getSize()
+        //grandezza.add(game.getSize().width);  // X
+        //grandezza.add(game.getSize().height); // y
+        grandezza.add(824);
+        grandezza.add(512);
 
         return grandezza;
     }
 
+    private static void start_game(){
+
+        game.paintComponent(game.getGraphics());
+        System.out.println(get_size());
+
+
+
+
+    }
 
 }

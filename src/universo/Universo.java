@@ -148,4 +148,9 @@ public class Universo implements InterfaceUniverso {
 
     }
 
+    public void posizionaUtenti() {
+        for (Persona me : this.get_active_universe()){
+            me.posizione();
+        }
+    }
 }

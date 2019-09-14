@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Vector;
 
-public class Persona implements InterfacePersona {
+public class Persona implements InterfacePersona  {
     // Variabili statiche (globali)
     // ID univoco di ogni utente
     private static int master_id = 0;
@@ -62,8 +62,7 @@ public class Persona implements InterfacePersona {
         this.Feedback.set(0,null);
 
 
-        BoardX = rand.nextInt(GUI.get_size().get(0));
-        BoardY = rand.nextInt(GUI.get_size().get(1));
+
 
     }
 
@@ -270,4 +269,12 @@ public class Persona implements InterfacePersona {
         return is_alive;
     }
 
+    public void posizione() {
+        Random rand = new Random();
+
+        System.out.println(GUI.get_size().get(0));
+
+        BoardX = rand.nextInt(GUI.get_size().get(0));
+        BoardY = rand.nextInt(GUI.get_size().get(1));
+    }
 }

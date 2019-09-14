@@ -11,12 +11,13 @@ public class Game extends JPanel {
 
     public Game() {
         setBorder(BorderFactory.createLineBorder(Color.black));
+
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        Shape shape = new Rectangle2D.Float(0,0,1,1);
+        Shape shape = new Rectangle2D.Float(50,50,1,1);
         g2.fill(shape);
     }
 
