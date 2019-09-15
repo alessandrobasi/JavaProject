@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface InterfacePersona {
     // Printa le informazioni dell'utente
-    List<Object> get_info();
+    List<Object> get_info(boolean print);
 
     // Aggiungi conoscente nelle relazioni
     void add_acquaintances(Persona conoscente) throws FullVectorException;

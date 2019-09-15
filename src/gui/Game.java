@@ -22,6 +22,7 @@ public class Game extends JPanel {
     }
 
     public void posizionaUtenti(Graphics g) {
+
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
@@ -30,7 +31,7 @@ public class Game extends JPanel {
 
             Shape shape = new Rectangle2D.Float(io.BoardX, io.BoardY, 40, 40);
             // Draw Text
-            g.drawString(Integer.toString((Integer) io.get_info().get(1))  ,io.BoardX+15,io.BoardY+50);
+            g.drawString(Integer.toString((Integer) io.get_info(false).get(1))  ,io.BoardX+15,io.BoardY+50);
 
             g2.fill(shape);
         }

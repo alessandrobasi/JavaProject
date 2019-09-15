@@ -220,6 +220,10 @@ public class GUI extends JFrame {
         mondo1.posizionaUtenti();
 
         game.posizionaUtenti(game.getGraphics());
+
+        game.getGraphics().drawRect(10,10,10,10);
+
+
     }
 
     public static Vector<Integer> get_size(){
@@ -236,7 +240,7 @@ public class GUI extends JFrame {
     private static void start_game(){
 
         game.paintComponent(game.getGraphics());
-        System.out.println(get_size());
+        //System.out.println(get_size());
 
 
 

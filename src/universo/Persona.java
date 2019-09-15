@@ -69,14 +69,17 @@ public class Persona implements InterfacePersona  {
 
     // Printa le informazioni dell'utente
 
-    public List<Object> get_info(){
+    public List<Object> get_info(boolean print){
 
-        System.out.println("" +
-                "In vita: " + is_alive + "\n" +
-                "ID univoco: " + id + "\n" +
-                "Tempo di vita rimanente: " + TTL + "\n" +
-                "Benessere: " + Relation_board.get(0).getValue() + "\n" +
-                "Umore: " + Messaggi.get(0) + "\n" );
+        if (print) {
+            System.out.println("" +
+                    "In vita: " + is_alive + "\n" +
+                    "ID univoco: " + id + "\n" +
+                    "Tempo di vita rimanente: " + TTL + "\n" +
+                    "Benessere: " + Relation_board.get(0).getValue() + "\n" +
+                    "Umore: " + Messaggi.get(0) + "\n" );
+        }
+
 
         List<Object> info = new Vector<>();
         info.add(is_alive);
@@ -272,7 +275,7 @@ public class Persona implements InterfacePersona  {
     public void posizione() {
         Random rand = new Random();
 
-        System.out.println(GUI.get_size().get(0));
+        //System.out.println(GUI.get_size().get(0));
 
         BoardX = rand.nextInt(GUI.get_size().get(0));
         BoardY = rand.nextInt(GUI.get_size().get(1));

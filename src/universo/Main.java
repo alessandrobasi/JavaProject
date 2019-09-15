@@ -12,9 +12,9 @@ public class Main {
 
         Persona numero2 = new Persona();
 
-        numero1.get_info();
+        numero1.get_info(true);
 
-        numero2.get_info();
+        numero2.get_info(true);
 
 
         try {

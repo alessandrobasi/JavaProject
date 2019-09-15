@@ -12,9 +12,9 @@ public class Start {
 
         Persona numero2 = new Persona();
 
-        numero1.get_info();
+        numero1.get_info(false);
 
-        numero2.get_info();
+        numero2.get_info(false);
 
         try {
             numero1.add_acquaintances(numero2);
